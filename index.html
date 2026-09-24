@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swalih.M | Web Developer</title>
+  <meta name="description" content="Portfolio landing page of Swalih.M - Self-motivated Web Developer">
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       MODERN PORTFOLIO LANDING PAGE - SWALIH.M
+       Aesthetics: Deep Cyber-Luxe Dark Theme with Neon Cyan & Electric Violet Glow
+       ========================================================================== */
+
+    :root {
+      /* Colors */
+      --bg-dark: #07090e;
+      --bg-card: rgba(14, 20, 32, 0.65);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --bg-card-hover: rgba(20, 29, 48, 0.85);
+
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-purple: #8a2be2;
+      --accent-violet: #a855f7;
+      --accent-glow: rgba(0, 242, 254, 0.35);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      /* Typography */
+      --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Transitions */
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Box Sizing */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: var(--font-main);
+      overflow: hidden; /* Strict 1-screen landing experience */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --------------------------------------------------------------------------
+       AMBIENT BACKGROUND & CYBER GRID
+       -------------------------------------------------------------------------- */
+    .cyber-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+      transition: transform 0.2s ease-out;
+    }
+
+    .glow-1 {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.4) 0%, rgba(0, 242, 254, 0) 70%);
+      top: -100px;
+      left: 15%;
+      animation: floatOrb 14s infinite alternate ease-in-out;
+    }
+
+    .glow-2 {
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(138, 43, 226, 0) 70%);
+      bottom: -150px;
+      right: 15%;
+      animation: floatOrb 18s infinite alternate-reverse ease-in-out;
+    }
+
+    .glow-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(79, 172, 254, 0.25) 0%, transparent 70%);
+      bottom: 20%;
+      left: 45%;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+      100% { transform: translate(-30px, 40px) scale(0.95); }
+    }
+
+    /* --------------------------------------------------------------------------
+       LAYOUT WRAPPER
+       -------------------------------------------------------------------------- */
+    .main-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.2rem 3rem 1.2rem 3rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* --------------------------------------------------------------------------
+       NAVIGATION BAR
+       -------------------------------------------------------------------------- */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.8rem 1.8rem;
+      background: rgba(14, 20, 32, 0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 999px;
+      animation: fadeInDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .logo {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-bracket {
+      color: var(--accent-cyan);
+    }
+
+    .logo-text {
+      color: #fff;
+      margin: 0 2px;
+    }
+
+    .logo-dot {
+      color: var(--accent-violet);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+      border-radius: 2px;
+    }
+
+    .btn-glow-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1.1rem;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-glow-sm:hover {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+      color: #07090e;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------------------------------
+       HERO SECTION
+       -------------------------------------------------------------------------- */
+    .hero-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       TOP TITLE: "SWALIH.M" DROPPING FROM TOP
+       -------------------------------------------------------------------------- */
+    .hero-top-banner {
+      text-align: center;
+      margin-top: 0.2rem;
+      z-index: 10;
+    }
+
+    .greeting-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      animation: fadeInDown 0.8s ease-out 0.2s both;
+    }
+
+    .hero-name {
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      font-weight: 900;
+      letter-spacing: 4px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin: 0;
+      filter: drop-shadow(0 4px 20px rgba(0, 242, 254, 0.25));
+    }
+
+    /* Entrance Animation: Name dropping from top */
+    .animate-down {
+      animation: slideFromTop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideFromTop {
+      0% {
+        opacity: 0;
+        transform: translateY(-90px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 60%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .accent-dot {
+      color: var(--accent-violet);
+      display: inline-block;
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    .text-white {
+      color: #fff;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 4px var(--accent-violet)); }
+      50% { transform: scale(1.3); opacity: 0.8; filter: drop-shadow(0 0 14px var(--accent-violet)); }
+    }
+
+    /* --------------------------------------------------------------------------
+       HERO 3-COLUMN GRID
+       -------------------------------------------------------------------------- */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      align-items: center;
+      gap: 2rem;
+      flex: 1;
+      position: relative;
+      min-height: 0; /* Prevents overflow */
+    }
+
+    /* Left & Right Glass Cards */
+    .hero-side {
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-left {
+      animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+
+    .hero-right {
+      animation: slideFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+    }
+
+    @keyframes slideFromLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-80px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideFromRight {
+      0% {
+        opacity: 0;
+        transform: translateX(80px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 24px;
+      padding: 1.8rem;
+      width: 100%;
+      max-width: 370px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+      opacity: 0.6;
+    }
+
+    .right-card::before {
+      background: linear-gradient(90deg, transparent, var(--accent-violet), transparent);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 242, 254, 0.15);
+    }
+
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent-cyan);
+      margin-bottom: 0.9rem;
+    }
+
+    .code-symbol {
+      color: var(--text-muted);
+    }
+
+    .highlight-tag {
+      color: var(--accent-violet);
+    }
+
+    .sparkle {
+      color: #ffd700;
+      animation: spinSlow 6s linear infinite;
+    }
+
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Typewriter Area */
+    .typewriter-container {
+      min-height: 2.8rem;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .typewriter-text {
+      font-family: var(--font-mono);
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    }
+
+    .cursor {
+      font-family: var(--font-mono);
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--accent-cyan);
+      margin-left: 3px;
+      animation: blink 0.9s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .role-description, .attribute-desc {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Tech Stack Badges */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .tech-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.04);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .tech-badge:hover {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Right Card: Self Motivated Title & Strengths */
+    .attribute-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+    }
+
+    .highlight-neon {
+      background: linear-gradient(135deg, #fff 0%, var(--accent-violet) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
+    }
+
+    .strength-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .strength-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.55rem 0.85rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition-smooth);
+    }
+
+    .strength-item:hover {
+      background: rgba(168, 85, 247, 0.08);
+      border-color: rgba(168, 85, 247, 0.3);
+      transform: translateX(4px);
+    }
+
+    .strength-icon {
+      font-size: 1.25rem;
+    }
+
+    .strength-info h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .strength-info p {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.65rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #050810;
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 25px rgba(0, 242, 254, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: var(--accent-violet);
+      box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------------------------------
+       CENTER HERO: PORTRAIT RISING FROM BOTTOM
+       -------------------------------------------------------------------------- */
+    .hero-center {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100%;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    .portrait-stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Glowing Halo / Aura behind the image */
+    .portrait-aura {
+      position: absolute;
+      bottom: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(138, 43, 226, 0.25) 45%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(50px);
+      z-index: 1;
+      pointer-events: none;
+      animation: auraPulse 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes auraPulse {
+      0% { transform: translateX(-50%) scale(0.9); opacity: 0.6; }
+      100% { transform: translateX(-50%) scale(1.15); opacity: 0.95; }
+    }
+
+    .portrait-ring {
+      position: absolute;
+      bottom: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 1px dashed rgba(0, 242, 254, 0.35);
+      box-shadow: inset 0 0 25px rgba(0, 242, 254, 0.1);
+      z-index: 1;
+      animation: rotateRing 25s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rotateRing {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    /* Pedestal Platform */
+    .portrait-pedestal {
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      height: 14px;
+      background: radial-gradient(ellipse, rgba(0, 242, 254, 0.6) 0%, transparent 75%);
+      filter: blur(6px);
+      z-index: 3;
+    }
+
+    /* Portrait Image Container & Keyframe Entrance */
+    .portrait-container {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      max-height: 52vh;
+      transition: transform 0.4s ease-out;
+    }
+
+    /* Bottom-up entrance animation requested by user */
+    .animate-up {
+      animation: slideUpFromBottom 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideUpFromBottom {
+      0% {
+        opacity: 0;
+        transform: translateY(160px) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Idle subtle floating effect once loaded */
+    .portrait-container.idle-floating {
+      animation: floatingIdle 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatingIdle {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .portrait-img {
+      max-height: 52vh;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 25px rgba(0, 242, 254, 0.25));
+      transition: filter 0.4s ease;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .portrait-img:hover {
+      filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 35px rgba(0, 242, 254, 0.45));
+    }
+
+    /* Bottom fade to seamlessly blend image bottom into floor */
+    .portrait-bottom-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to top, var(--bg-dark) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* --------------------------------------------------------------------------
+       FOOTER (Status & Social Links)
+       -------------------------------------------------------------------------- */
+    .hero-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 0.5rem;
+      z-index: 10;
+      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    }
+
+    .availability-status {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(14, 20, 32, 0.5);
+      border: 1px solid var(--bg-card-border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+
+    .pulse-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: liveBlink 1.8s infinite;
+    }
+
+    @keyframes liveBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .status-text {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(14, 20, 32, 0.6);
+      border: 1px solid var(--bg-card-border);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .social-btn:hover {
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.1);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.35);
+      transform: translateY(-3px);
+    }
+
+    /* General Animations */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --------------------------------------------------------------------------
+       RESPONSIVE DESIGN (Tablets, Laptops, Mobile)
+       -------------------------------------------------------------------------- */
+
+    /* Medium Desktops & Laptops (under 1200px) */
+    @media (max-width: 1200px) {
+      .main-wrapper {
+        padding: 1rem 1.5rem;
+      }
+      .hero-grid {
+        gap: 1.2rem;
+      }
+      .glass-card {
+        padding: 1.4rem;
+      }
+      .portrait-container {
+        max-height: 48vh;
+      }
+      .portrait-img {
+        max-height: 48vh;
+      }
+    }
+
+    /* Tablets (under 992px) */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+      }
+
+      .hero-center {
+        grid-column: 1 / -1;
+        order: -1;
+        height: 38vh;
+      }
+
+      .portrait-container {
+        max-height: 38vh;
+      }
+
+      .portrait-img {
+        max-height: 38vh;
+      }
+
+      .hero-left, .hero-right {
+        width: 100%;
+      }
+
+      .glass-card {
+        max-width: 100%;
+      }
+    }
+
+    /* Mobile Devices (under 768px) */
+    @media (max-width: 768px) {
+      html, body {
+        overflow-y: auto; /* Allow smooth scroll on small screens while keeping compact aesthetic */
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .main-wrapper {
+        height: auto;
+        min-height: 100vh;
+        padding: 1rem 1rem 1.5rem 1rem;
+        gap: 1.5rem;
+      }
+
+      .nav-links {
+        display: none; /* Keep header clean on mobile */
+      }
+
+      .hero-name {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .hero-center {
+        order: 1;
+        height: auto;
+        margin: 0.5rem 0;
+      }
+
+      .portrait-container {
+        max-height: 35vh;
+      }
+
+      .portrait-img {
+        max-height: 35vh;
+      }
+
+      .hero-left {
+        order: 2;
+        width: 100%;
+      }
+
+      .hero-right {
+        order: 3;
+        width: 100%;
+      }
+
+      .hero-footer {
+        flex-direction: column-reverse;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient glowing backdrop orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+  <div class="cyber-grid"></div>
+
+  <div class="main-wrapper">
+    <!-- Modern Header / Navbar -->
+    <header class="navbar">
+      <div class="logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">SWALIH</span>
+        <span class="logo-dot">.</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-link active">Home</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="#contact" class="btn-glow-sm">
+          <span>Let's Talk</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Landing Viewport (100vh hero section) -->
+    <main class="hero-section">
+      
+      <!-- Top Title Dropdown: SWALIH.M -->
+      <div class="hero-top-banner">
+        <span class="greeting-tag">HELLO WORLD, I'M</span>
+        <h1 class="hero-name animate-down" id="heroName">
+          <span class="gradient-text">SWALIH</span><span class="accent-dot">.</span><span class="text-white">M</span>
+        </h1>
+      </div>
+
+      <!-- Content Grid: Left, Center (Image), Right -->
+      <div class="hero-grid">
+        
+        <!-- LEFT SIDE: Typewriter "WEB DEVELOPER" -->
+        <div class="hero-side hero-left">
+          <div class="glass-card left-card">
+            <div class="card-tag">
+              <span class="code-symbol">&lt;code&gt;</span>
+              <span>SPECIALIZATION</span>
+            </div>
+
+            <!-- Animated Typewriter Display -->
+            <div class="typewriter-container">
+              <span class="typewriter-text" id="typewriter"></span>
+              <span class="cursor" id="typeCursor">|</span>
+            </div>
+
+            <p class="role-description">
+              Passionate about engineering responsive, high-performance web applications with clean code and modern aesthetic UI.
+            </p>
+
+            <!-- Tech Pills -->
+            <div class="tech-stack">
+              <span class="tech-badge">HTML5</span>
+              <span class="tech-badge">CSS3</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Responsive</span>
+            </div>
+
+            <div class="card-action">
+              <a href="#projects" class="btn-primary">
+                <span>View Projects</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: Portrait Image (mine.png) rising up from bottom -->
+        <div class="hero-center">
+          <div class="portrait-stage">
+            <!-- Glowing aura behind portrait -->
+            <div class="portrait-aura"></div>
+            <div class="portrait-ring"></div>
+            
+            <!-- Animated Image Container -->
+            <div class="portrait-container animate-up" id="portraitContainer">
+              <img src="mine.png" alt="Swalih.M" class="portrait-img" id="portraitImg">
+              <div class="portrait-bottom-gradient"></div>
+            </div>
+
+            <!-- Pedestal glow / platform -->
+            <div class="portrait-pedestal"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: "SELF MOTIVATED" Card -->
+        <div class="hero-side hero-right">
+          <div class="glass-card right-card">
+            <div class="card-tag highlight-tag">
+              <span class="sparkle">✦</span>
+              <span>ATTRIBUTES</span>
+            </div>
+
+            <h2 class="attribute-title">
+              <span class="highlight-neon">SELF MOTIVATED</span>
+            </h2>
+
+            <p class="attribute-desc">
+              Driven by curiosity and a relentless commitment to personal growth, modern problem-solving, and building impactful digital products.
+            </p>
+
+            <!-- Key Feature Strengths -->
+            <div class="strength-list">
+              <div class="strength-item">
+                <div class="strength-icon">⚡</div>
+                <div class="strength-info">
+                  <h4>Quick Learner</h4>
+                  <p>Adapting fast to modern web tech</p>
+                </div>
+              </div>
+              <div class="strength-item">
+                <div class="strength-icon">🎯</div>
+                <div class="strength-info">
+                  <h4>100% Dedicated</h4>
+                  <p>Focused on precision & quality</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-action">
+              <a href="#contact" class="btn-secondary">
+                <span>Contact Me</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Floating Bar: Socials & Availability -->
+      <footer class="hero-footer">
+        <div class="availability-status">
+          <span class="pulse-indicator"></span>
+          <span class="status-text">Available for Projects & Collaboration</span>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="mailto:swalih@example.com" class="social-btn" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- All JavaScript embedded directly into index.html -->
+  <script>
+    /**
+     * SWALIH.M - Modern Animated Landing Page Scripts
+     * Includes:
+     * 1. Synchronized Entrance Animations (Portrait Rise, Name Drop)
+     * 2. Typewriter Effect for "WEB DEVELOPER"
+     * 3. Portrait Float Idle Transition
+     * 4. Interactive Ambient Mouse Parallax Effect
+     */
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initTypewriter();
+      initPortraitAnimation();
+      initParallaxGlow();
+      initInteractiveNav();
+    });
+
+    /* ==========================================================================
+       1. TYPEWRITER EFFECT FOR "WEB DEVELOPER"
+       ========================================================================== */
+    function initTypewriter() {
+      const typewriterElement = document.getElementById('typewriter');
+      if (!typewriterElement) return;
+
+      const phrases = [
+        'WEB DEVELOPER',
+        'FRONTEND DEV',
+        'CREATIVE CODER',
+        'WEB DEVELOPER'
+      ];
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 100;
+
+      // Initial delay so it types smoothly as cards slide in
+      setTimeout(type, 600);
+
+      function type() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+          // Removing characters
+          typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+          charIndex--;
+          typingSpeed = 50;
+        } else {
+          // Typing characters
+          typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+          charIndex++;
+          typingSpeed = 110;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          // Hold longer on the first pass
+          const holdTime = phraseIndex === 0 ? 3500 : 2500;
+          typingSpeed = holdTime;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          typingSpeed = 400; // pause before next word
+        }
+
+        setTimeout(type, typingSpeed);
+      }
+    }
+
+    /* ==========================================================================
+       2. PORTRAIT ENTRANCE & FLOATING TRANSITION
+       ========================================================================== */
+    function initPortraitAnimation() {
+      const portraitContainer = document.getElementById('portraitContainer');
+      if (!portraitContainer) return;
+
+      // After the slide-up animation (1.4s) completes, switch to gentle floating
+      portraitContainer.addEventListener('animationend', (e) => {
+        if (e.animationName === 'slideUpFromBottom') {
+          portraitContainer.classList.remove('animate-up');
+          portraitContainer.classList.add('idle-floating');
+        }
+      });
+
+      // Fallback in case animationend is delayed or missed
+      setTimeout(() => {
+        if (!portraitContainer.classList.contains('idle-floating')) {
+          portraitContainer.classList.remove('animate-up');
+          portraitContainer.classList.add('idle-floating');
+        }
+      }, 1600);
+    }
+
+    /* ==========================================================================
+       3. MOUSE PARALLAX EFFECT FOR AMBIENT ORBS & CARDS
+       ========================================================================== */
+    function initParallaxGlow() {
+      const glow1 = document.querySelector('.glow-1');
+      const glow2 = document.querySelector('.glow-2');
+      const glow3 = document.querySelector('.glow-3');
+      const portraitStage = document.querySelector('.portrait-stage');
+
+      // Disable intense movement on touch devices
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+
+      window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        const offsetX = (clientX - centerX) / centerX; // -1 to 1
+        const offsetY = (clientY - centerY) / centerY; // -1 to 1
+
+        // Move ambient glowing orbs slightly with mouse
+        if (glow1) {
+          glow1.style.transform = `translate(${offsetX * 30}px, ${offsetY * 30}px)`;
+        }
+        if (glow2) {
+          glow2.style.transform = `translate(${-offsetX * 35}px, ${-offsetY * 35}px)`;
+        }
+        if (glow3) {
+          glow3.style.transform = `translate(${offsetX * 20}px, ${offsetY * 20}px)`;
+        }
+
+        // Subtle 3D tilt reaction on the portrait
+        if (portraitStage) {
+          portraitStage.style.transform = `perspective(1000px) rotateY(${offsetX * 4}deg) rotateX(${-offsetY * 3}deg)`;
+        }
+      });
+    }
+
+    /* ==========================================================================
+       4. NAVIGATION SMOOTH ACTIVE STATE
+       ========================================================================== */
+    function initInteractiveNav() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          navLinks.forEach((l) => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
