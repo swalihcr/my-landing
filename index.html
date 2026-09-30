@@ -930,6 +930,220 @@
         text-align: center;
       }
     }
+
+    /* --------------------------------------------------------------------------
+       CENTERED CONTACT MODAL ("Let's Talk")
+       -------------------------------------------------------------------------- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 8, 16, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      background: rgba(14, 20, 34, 0.92);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 28px;
+      padding: 2.2rem 2rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 40px rgba(0, 242, 254, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+      transform: scale(0.65) translateY(20px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+      overflow: hidden;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet), var(--accent-cyan));
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #ef4444;
+      color: #fff;
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .modal-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent-cyan);
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+
+    .modal-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-subtitle {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .modal-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      text-decoration: none;
+      color: #fff;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-option:hover {
+      transform: translateY(-3px) scale(1.01);
+    }
+
+    .contact-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+
+    /* WhatsApp Option Styling */
+    .option-whatsapp:hover {
+      background: rgba(37, 211, 102, 0.1);
+      border-color: rgba(37, 211, 102, 0.45);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.2);
+    }
+    .option-whatsapp .contact-icon {
+      background: rgba(37, 211, 102, 0.15);
+      color: #25D366;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+    }
+
+    /* Instagram Option Styling */
+    .option-instagram:hover {
+      background: rgba(225, 48, 108, 0.1);
+      border-color: rgba(225, 48, 108, 0.45);
+      box-shadow: 0 8px 25px rgba(225, 48, 108, 0.2);
+    }
+    .option-instagram .contact-icon {
+      background: rgba(225, 48, 108, 0.15);
+      color: #E1306C;
+      border: 1px solid rgba(225, 48, 108, 0.3);
+    }
+
+    /* Email Option Styling */
+    .option-email:hover {
+      background: rgba(0, 242, 254, 0.1);
+      border-color: rgba(0, 242, 254, 0.45);
+      box-shadow: 0 8px 25px rgba(0, 242, 254, 0.2);
+    }
+    .option-email .contact-icon {
+      background: rgba(0, 242, 254, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+    }
+
+    .contact-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .contact-details h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-details p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .contact-arrow {
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+    }
+
+    .contact-option:hover .contact-arrow {
+      color: #fff;
+      transform: translateX(4px);
+    }
   </style>
 </head>
 <body>
@@ -943,27 +1157,24 @@
     <!-- Modern Header / Navbar -->
     <header class="navbar">
       <div class="logo">
-        <span class="logo-bracket">&lt;</span>
         <span class="logo-text">SWALIH</span>
-        <span class="logo-dot">.</span>
-        <span class="logo-bracket">/&gt;</span>
       </div>
 
       <nav class="nav-links">
         <a href="#about" class="nav-link active">Home</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="nav-link" id="navContactLink">Contact</a>
       </nav>
 
       <div class="nav-cta">
-        <a href="#contact" class="btn-glow-sm">
+        <button type="button" class="btn-glow-sm" id="letsTalkBtn" style="cursor: pointer;">
           <span>Let's Talk</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="7" y1="17" x2="17" y2="7"></line>
             <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
-        </a>
+        </button>
       </div>
     </header>
 
@@ -1069,7 +1280,7 @@
             </div>
 
             <div class="card-action">
-              <a href="#contact" class="btn-secondary">
+              <a href="#contact" class="btn-secondary" id="contactMeCardBtn">
                 <span>Contact Me</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               </a>
@@ -1087,19 +1298,96 @@
         </div>
 
         <div class="social-links">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
+          <a href="https://github.com/dashboard" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
-          <a href="mailto:swalih@example.com" class="social-btn" aria-label="Email">
+          <a href="mailto:m.swalih9947482555@gmail.com" class="social-btn" aria-label="Email">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
         </div>
       </footer>
 
     </main>
+  </div>
+
+  <!-- Centered Contact Modal (Triggered by "Let's Talk") -->
+  <div class="modal-overlay" id="contactModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close Modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <span class="modal-badge">CONNECT WITH ME</span>
+        <h3 class="modal-title" id="modalTitle">Let's Talk</h3>
+        <p class="modal-subtitle">Choose your preferred way to reach out</p>
+      </div>
+
+      <div class="modal-options">
+        <!-- 1. WhatsApp Option (9645794194 with automatic message) -->
+        <a href="https://wa.me/919645794194?text=Hello%20Swalih!%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20connect%20with%20you." target="_blank" rel="noopener noreferrer" class="contact-option option-whatsapp">
+          <div class="contact-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <h4>WhatsApp</h4>
+            <p>+91 9645794194 • Instant Message</p>
+          </div>
+          <div class="contact-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 2. Instagram Option (swalih.cr) -->
+        <a href="https://www.instagram.com/swalih.cr/" target="_blank" rel="noopener noreferrer" class="contact-option option-instagram">
+          <div class="contact-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <h4>Instagram</h4>
+            <p>@swalih.cr • Follow & DM</p>
+          </div>
+          <div class="contact-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 3. E-Mail Option (m.swalih9947482555@gmail.com) -->
+        <a href="mailto:m.swalih9947482555@gmail.com?subject=Hello%20Swalih%20-%20Let's%20Connect&body=Hi%20Swalih,%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20get%20in%20touch." class="contact-option option-email">
+          <div class="contact-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <h4>E-Mail</h4>
+            <p>m.swalih9947482555@gmail.com</p>
+          </div>
+          <div class="contact-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- All JavaScript embedded directly into index.html -->
@@ -1111,6 +1399,7 @@
      * 2. Typewriter Effect for "WEB DEVELOPER"
      * 3. Portrait Float Idle Transition
      * 4. Interactive Ambient Mouse Parallax Effect
+     * 5. Centered Contact Modal ("Let's Talk")
      */
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1118,6 +1407,7 @@
       initPortraitAnimation();
       initParallaxGlow();
       initInteractiveNav();
+      initContactModal();
     });
 
     /* ==========================================================================
@@ -1244,6 +1534,49 @@
           navLinks.forEach((l) => l.classList.remove('active'));
           link.classList.add('active');
         });
+      });
+    }
+
+    /* ==========================================================================
+       5. CENTERED CONTACT MODAL ("Let's Talk")
+       ========================================================================== */
+    function initContactModal() {
+      const modal = document.getElementById('contactModal');
+      const letsTalkBtn = document.getElementById('letsTalkBtn');
+      const contactMeCardBtn = document.getElementById('contactMeCardBtn');
+      const navContactLink = document.getElementById('navContactLink');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+
+      if (!modal) return;
+
+      function openModal(e) {
+        if (e) e.preventDefault();
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (letsTalkBtn) letsTalkBtn.addEventListener('click', openModal);
+      if (contactMeCardBtn) contactMeCardBtn.addEventListener('click', openModal);
+      if (navContactLink) navContactLink.addEventListener('click', openModal);
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+      // Close when clicking outside the modal box
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
       });
     }
   </script>
